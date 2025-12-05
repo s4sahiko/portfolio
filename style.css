@@ -1,16 +1,20 @@
-/* Custom Scrollbar*/
+/*===================================================================*/
+/* 1. SCROLLBAR & BASE STYLES                                        */
+/*===================================================================*/
+
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
 }
 ::-webkit-scrollbar-thumb {
-    background-color: #00bcd4; /* Cyan */
+    background-color: var(--primary-color); /* Cyan */
     border-radius: 10px;
 }
 ::-webkit-scrollbar-track {
-    background: #1e1e2f; /* Dark background */
+    background: var(--bg-light); /* Dark background */
 }
 
-/* Base Styles */
+/* CSS Variables (Design Tokens) */
 :root {
     --primary-color: #00bcd4; /* Cyan */
     --secondary-color: #3f51b5; /* Indigo*/
@@ -20,8 +24,10 @@
     --bg-light: #1e1e2f;
     --card-bg: #1e1e2f;
     --transition-speed: 0.4s;
+    --box-shadow-dark: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* Reset and Global Box Sizing */
 * {
     margin: 0;
     padding: 0;
@@ -42,7 +48,67 @@ body {
     padding: 0 20px;
 }
 
-/* Header & Navigation */
+section {
+    padding: 80px 0;
+    min-height: 60vh;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 50px;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary-color);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* Button Component */
+.button {
+    background-color: var(--primary-color);
+    color: var(--text-dark); 
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 600;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 188, 212, 0.4);
+    display: inline-block;
+    text-decoration: none; /* Ensure buttons used as links are styled correctly */
+}
+
+.button:hover {
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(63, 81, 181, 0.6);
+}
+
+.button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+
+/*===================================================================*/
+/* 2. HEADER & NAVIGATION                                            */
+/*===================================================================*/
+
 header {
     background-color: var(--bg-light);
     padding: 15px 0;
@@ -85,34 +151,10 @@ nav a:hover {
     border-bottom: 2px solid var(--primary-color);
 }
 
-/* Main Content Sections */
 
-section {
-    padding: 80px 0;
-    min-height: 60vh;
-}
-
-.section-title {
-    text-align: center;
-    font-size: 2.5em;
-    margin-bottom: 50px;
-    color: var(--text-light);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    position: relative;
-}
-
-.section-title::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 4px;
-    background-color: var(--primary-color);
-    margin: 10px auto 0;
-    border-radius: 2px;
-}
-
-/* Summary Section */
+/*===================================================================*/
+/* 3. HERO SECTION (SUMMARY)                                         */
+/*===================================================================*/
 
 .hero-section {
     padding-top: 120px;
@@ -136,7 +178,8 @@ section {
     font-size: 1.1em;
     margin-bottom: 30px;
     max-width: 600px;
-    opacity: 0; /* for JavaScript scroll animation */
+    /* Styles for JS scroll animation */
+    opacity: 0; 
     transition: opacity 1s ease-out;
 }
 
@@ -149,41 +192,6 @@ section {
     margin: 5px 0;
     color: #b0b0c0;
 }
-
-/* Contact Button */
-
-.button {
-    /* Base Appearance */
-    background-color: var(--primary-color);
-    color: var(--text-dark); 
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.1em;
-    font-weight: 600;
-    
-    /* Layout and Spacing */
-    padding: 12px 30px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 188, 212, 0.4);
-    display: inline-block;
-}
-
-.button:hover {
-    background-color: var(--secondary-color);
-    color: var(--text-light);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(63, 81, 181, 0.6);
-}
-
-.button:active {
-    transform: translateY(-1px);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
-}
-
 
 .hero-image {
     flex-shrink: 0;
@@ -198,7 +206,7 @@ section {
     background-color: rgba(0, 188, 212, 0.1);
     border: 3px solid var(--primary-color);
     box-shadow: 0 0 20px rgba(0, 188, 212, 0.5); /* Subtle glow */
-    transform: translateY(0); /* for JavaScript parallax */
+    transform: translateY(0);
 }
 
 .hero-image:hover{
@@ -214,7 +222,11 @@ section {
     100% { transform: scale(1); opacity: 0.7; }
 }
 
-/* Skills Section */
+
+/*===================================================================*/
+/* 4. SKILLS SECTION                                                 */
+/*===================================================================*/
+
 .skills-section {
     background-color: var(--bg-light);
 }
@@ -236,21 +248,26 @@ section {
     font-weight: 600;
     cursor: default;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--box-shadow-dark);
     color: var(--text-light);
-    opacity: 0; /* for JS animation */
-    transform: scale(0.5); /* for JS animation */
+    /* Styles for JS animation */
+    opacity: 0; 
+    transform: scale(0.5); 
 }
 
 .skill-bubble:hover {
-    background-color: var(--primary-- Interactive Bubbles color);
+    background-color: var(--primary-color);
     color: var(--text-dark);
     transform: scale(1.1) translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 188, 212, 0.5);
     border-color: var(--primary-color); 
 }
 
-/* 3. Experience & Certifications - Timeline */
+
+/*===================================================================*/
+/* 5. EXPERIENCE & CERTIFICATIONS (TIMELINE)                         */
+/*===================================================================*/
+
 .timeline-section {
     padding-bottom: 120px;
 }
@@ -339,7 +356,10 @@ section {
     font-size: 0.95em;
 }
 
-/* Education Section */
+
+/*===================================================================*/
+/* 6. EDUCATION SECTION                                              */
+/*===================================================================*/
 
 .education-section {
     background-color: var(--bg-dark);
@@ -360,8 +380,9 @@ section {
     text-align: center;
     border-bottom: 5px solid var(--secondary-color);
     transition: transform var(--transition-speed), border-color var(--transition-speed);
-    opacity: 0; /* for JS scroll animation */
-    transform: translateY(50px); /* for JS scroll animation */
+    /* Styles for JS scroll animation */
+    opacity: 0; 
+    transform: translateY(50px); 
 }
 
 .education-cards .card.visible {
@@ -385,7 +406,10 @@ section {
     margin-top: 10px;
 }
 
-/* 5. Achievements Section */
+
+/*===================================================================*/
+/* 7. ACHIEVEMENTS SECTION                                           */
+/*===================================================================*/
 
 .achievements-section {
     background-color: var(--bg-light);
@@ -402,16 +426,17 @@ section {
     padding: 25px;
     border-radius: 10px;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: var(--box-shadow-dark);
     transition: transform 0.3s ease, border-color 0.3s ease;
     border: 1px solid transparent;
-    opacity: 0; /* for JS scroll animation */
-    transform: scale(0.9); /* for JS scroll animation */
+    /* Styles for JS scroll animation */
+    opacity: 0; 
+    transform: scale(0.9); 
 }
 
 .achievement-item.visible {
-    opacity: 1; /* for JS scroll animation */
-    transform: scale(1); /* for JS scroll animation */
+    opacity: 1; 
+    transform: scale(1); 
 }
 
 .achievement-item:hover {
@@ -434,6 +459,11 @@ section {
     margin-bottom: 10px;
     color: var(--text-light);
 }
+
+
+/*===================================================================*/
+/* 8. CONTACT SECTION                                                */
+/*===================================================================*/
 
 .contact-section {
     background-color: var(--bg-dark);
@@ -462,10 +492,11 @@ section {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     border: 2px solid transparent;
-    text-decoration: none; /* For Email/GitHub links */
+    text-decoration: none;
     color: var(--text-light);
-    opacity: 0; /* for JS scroll animation */
-    transform: translateY(20px); /* for JS scroll animation */
+    /* Styles for JS scroll animation */
+    opacity: 0; 
+    transform: translateY(20px); 
 }
 .contact-card.visible {
     opacity: 1;
@@ -501,7 +532,11 @@ section {
     margin-top: 10px;
     color: #999;
 }
-/* Footer */
+
+
+/*===================================================================*/
+/* 9. FOOTER                                                         */
+/*===================================================================*/
 
 footer {
     background-color: var(--bg-dark);
@@ -522,9 +557,29 @@ footer {
     color: var(--text-light);
 }
 
-/* Design */
 
+/*===================================================================*/
+/* 10. RESPONSIVE DESIGN (Media Queries)                             */
+/*===================================================================*/
+
+/* --- Tablet (Max-width 768px) --- */
 @media (max-width: 768px) {
+    /* Base Adjustments */
+    section {
+        padding: 60px 0;
+        min-height: auto;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+    
+    .section-title {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+
+    /* Header */
     header .container {
         flex-direction: column;
         text-align: center;
@@ -536,38 +591,123 @@ footer {
         margin: 0 10px;
     }
 
+    /* Hero */
+    .hero-section {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
     .hero-section .container {
         flex-direction: column;
         text-align: center;
+        gap: 30px;
+    }
+    .hero-content h2 {
+        font-size: 2.5em;
     }
     .hero-image {
-        margin-top: 30px;
+        margin-left: 0; /* Center image */
+        margin-bottom: 0;
     }
 
+    /* Timeline */
     .timeline::after {
         left: 20px;
     }
-
     .timeline-item {
         width: 100%;
         padding-left: 60px;
         left: 0 !important;
         transform: translateX(0) !important;
     }
-
     .timeline-item:nth-child(odd) .timeline-dot,
     .timeline-item:nth-child(even) .timeline-dot {
         left: 10px;
         right: auto;
     }
 
+    /* Education */
     .education-cards {
         flex-direction: column;
+        gap: 20px;
     }
     .education-cards .card {
         width: 100%;
     }
+    
+    /* Achievements */
+    .achievements-list {
+        grid-template-columns: 1fr 1fr; 
+    }
+
+    /* Contact */
+    .contact-card {
+        width: 45%; 
+    }
 }
+
+/* --- Mobile Phone (Max-width 480px) --- */
+@media (max-width: 480px) {
+    /* Base Adjustments */
+    body {
+        font-size: 15px;
+    }
+    .container {
+        padding: 0 10px;
+    }
+    section {
+        padding: 40px 0;
+    }
+    .section-title {
+        font-size: 1.8em;
+    }
+
+    /* Navigation */
+    nav {
+        flex-wrap: wrap;
+    }
+    nav a {
+        margin: 5px 8px;
+        font-size: 0.9em;
+    }
+
+    /* Hero */
+    .hero-content h2 {
+        font-size: 2em;
+    }
+    .hero-content p {
+        font-size: 1em;
+    }
+    .hero-image {
+        width: 200px;
+        height: 200px;
+    }
+
+    /* Skills */
+    .skill-bubble {
+        font-size: 1em;
+        padding: 8px 15px;
+    }
+    
+    /* Timeline */
+    .timeline-content {
+        padding: 15px 20px;
+    }
+    
+    /* Achievements */
+    .achievements-list {
+        grid-template-columns: 1fr; /* Single column */
+    }
+    
+    /* Contact */
+    .contact-card {
+        width: 100%; /* Full width */
+    }
+}
+
+
+/*===================================================================*/
+/* 11. UTILITY CLASSES (Animation)                                   */
+/*===================================================================*/
 
 /* Scroll Animation Styles */
 [data-scroll-animate] {
@@ -575,7 +715,6 @@ footer {
 }
 
 /* Delay Utility for staggered animation (applied via JS) */
-
 [data-scroll-delay="200"] { transition-delay: 0.2s; }
 [data-scroll-delay="400"] { transition-delay: 0.4s; }
 [data-scroll-delay="600"] { transition-delay: 0.6s; }

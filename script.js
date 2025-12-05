@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Data and Generation
     const skillsData = [
-        "Python", "HTML/CSS", "C++", "Windows", "Wireshark", "Metasploit", 
-        "Vulnerability analysis", "Network security", "Github", "VS Code",
-        "Bash", "C", "Linux", "Nmap", "Burp Suite", "Git", "Basic pentesting",
-        "Ethical hacking", "TryHackMe"
+        "Python", "SQL", "HTML/CSS", "C/C++", "Bash",
+        "Linux", "Nmap", "Burp Suite", "GitHub",
+        "Windows", "Wireshark", "Metasploit","VS Code",
+        "Vulnerability analysis", "Network security", 
+        "Basic pentesting","Ethical hacking", "TryHackMe"
     ];
     const skillBubblesContainer = document.querySelector('.skill-bubbles');
 
@@ -61,8 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const skillBubbles = document.querySelectorAll('.skill-bubble');
         skillBubbles.forEach((bubble) => {
             if (elementInView(skillBubblesContainer, 100)) {
-                 bubble.style.opacity = '1';
-                 bubble.style.transform = 'scale(1)';
+                bubble.style.opacity = '1';
+                bubble.style.transform = 'scale(1)';
             }
         });
     };
@@ -71,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         handleScrollAnimation();
         handleParallax();
     });
-    
+
     // Run once on load to catch elements already in view
 
     handleScrollAnimation();
@@ -86,17 +87,17 @@ document.addEventListener('DOMContentLoaded', () => {
         // Calculate scroll position relative to the element's position on the screen
         const scrollPosition = window.pageYOffset;
         const speed = 0.2; // Adjust for stronger/weaker effect
-        
+
         // Move the element slightly up/down based on scroll
         parallaxElement.style.transform = `translateY(${scrollPosition * speed}px)`;
     };
-    
+
     // Initial call for immediate effect
     handleParallax();
 });
 
 // Smooth Scroll for Contact Button
 
-document.getElementById("contactBtn").addEventListener("click", function() {
-  document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+document.getElementById("contactBtn").addEventListener("click", function () {
+    document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
 });
