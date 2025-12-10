@@ -613,6 +613,10 @@ footer {
         height: 199px;
 
     }
+    img{
+        height: 198px;
+        width: 198px;
+    }
 
     /* Timeline */
     .timeline::after {
