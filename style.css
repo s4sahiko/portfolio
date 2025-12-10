@@ -208,7 +208,7 @@ nav a:hover {
     box-shadow: 0 0 20px rgba(0, 188, 212, 0.5); /* Subtle glow */
     transform: translateY(0);
 }
-.hero img{
+.img{
     height: 249px;
     width: 249px;
 }
