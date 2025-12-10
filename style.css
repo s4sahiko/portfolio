@@ -196,6 +196,7 @@ nav a:hover {
 .hero-image {
     flex-shrink: 0;
     height: 250px;
+    width: 250px;
     display: flex;
     justify-content: center;
     align-items: center;
