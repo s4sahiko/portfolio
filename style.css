@@ -690,7 +690,10 @@ footer {
         width: 200px;
         height: 200px;
     }
-
+    img{
+        height: 199px;
+        width: 199px;
+    }
     /* Skills */
     .skill-bubble {
         font-size: 1em;
