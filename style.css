@@ -597,7 +597,7 @@ footer {
     /* Hero */
     .hero-section {
         padding-top: 80px;
-        padding-bottom: 80px;
+        padding-bottom: 200px;
     }
     .hero-section .container {
         flex-direction: column;
