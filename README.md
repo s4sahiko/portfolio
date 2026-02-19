@@ -3,4 +3,4 @@
 
 ### View Portfolio
 1. https://s4sahiko.github.io/portfolio
-2. s4sahiko.pages.dev
+2. https://s4sahiko.pages.dev
