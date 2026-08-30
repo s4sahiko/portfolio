@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# Direct bots to the official sitemap
-Sitemap: https://s4sahiko.pages.dev/sitemap.xml
+Sitemap: https://sahiko.me/sitemap.xml
