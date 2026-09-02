@@ -105,6 +105,20 @@
             padding: 0;
         }
 
+        /* ----------------------------------------------------
+           GLOBAL SCROLLBAR HIDING
+        ---------------------------------------------------- */
+        html, body, * {
+            -ms-overflow-style: none !important;
+            scrollbar-width: none !important;
+        }
+
+        ::-webkit-scrollbar {
+            display: none !important;
+            width: 0 !important;
+            height: 0 !important;
+        }
+
         html, body {
             background-color: var(--bg-color);
             color: var(--text-color);
@@ -144,6 +158,16 @@
             height: 50px;
             background: #ffffff;
             mix-blend-mode: difference;
+        }
+
+        /* Hide custom cursor completely on mobile view and touch screens */
+        @media (max-width: 1024px), (pointer: coarse), (hover: none) {
+            .custom-cursor {
+                display: none !important;
+                opacity: 0 !important;
+                visibility: hidden !important;
+                pointer-events: none !important;
+            }
         }
 
         /* Interactive double text link effect */
@@ -1949,9 +1973,10 @@
             gsap.ticker.lagSmoothing(0);
         }
 
-        // Custom Cursor Movement
+        // Custom Cursor Movement (Desktop Only)
         const cursor = document.getElementById('customCursor');
-        if (cursor && window.innerWidth > 1024) {
+        const isTouchOrMobile = window.innerWidth <= 1024 || window.matchMedia('(pointer: coarse)').matches || ('ontouchstart' in window);
+        if (cursor && !isTouchOrMobile) {
             cursor.classList.add('active');
             let mouseX = 0, mouseY = 0;
             let cursorX = 0, cursorY = 0;
@@ -1970,9 +1995,19 @@
             renderCursor();
 
             document.querySelectorAll('a, button, .skill-tag, .big-project-card').forEach(el => {
-                el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-                el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+                el.addEventListener('mouseenter', () => {
+                    if (window.innerWidth > 1024 && !window.matchMedia('(pointer: coarse)').matches) {
+                        cursor.classList.add('hover');
+                    }
+                });
+                el.addEventListener('mouseleave', () => {
+                    if (window.innerWidth > 1024 && !window.matchMedia('(pointer: coarse)').matches) {
+                        cursor.classList.remove('hover');
+                    }
+                });
             });
+        } else if (cursor) {
+            cursor.style.display = 'none';
         }
 
         // Theme Toggle Functionality

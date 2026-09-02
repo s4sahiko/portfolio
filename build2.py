@@ -2,7 +2,8 @@ import os
 import base64
 
 def get_base64_images():
-    frames_dir = '/home/ausu/Desktop/portfolio/frames'
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    frames_dir = os.path.join(base_dir, 'frames')
     files = sorted([f for f in os.listdir(frames_dir) if f.endswith('.jpg')])
     base64_images = []
     for f in files:
@@ -11,13 +12,18 @@ def get_base64_images():
             base64_images.append(f'"data:image/jpeg;base64,{encoded}"')
     return ',\n'.join(base64_images)
 
-with open('/home/ausu/Desktop/portfolio/template.html', 'r') as f:
+base_dir = os.path.dirname(os.path.abspath(__file__))
+template_path = os.path.join(base_dir, 'template.html')
+index_path = os.path.join(base_dir, 'index.html')
+
+with open(template_path, 'r') as f:
     template = f.read()
 
 frames_str = get_base64_images()
 output_html = template.replace('/* INSERT_FRAMES_HERE */', frames_str)
 
-with open('/home/ausu/Desktop/portfolio/index.html', 'w') as f:
+with open(index_path, 'w') as f:
     f.write(output_html)
 
 print("index.html successfully updated with real content and video frames!")
+
